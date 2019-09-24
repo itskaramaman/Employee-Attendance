@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, render_template, session,
 from employee.models import Attendance
 from datetime import datetime, date
 from employee import db
+from employee.views.login_check import is_loggedin
 
 
 attendance_bp = Blueprint('attendance_bp', __name__)
@@ -15,6 +16,7 @@ def attendance():
 
 # punchin function
 @attendance_bp.route('/attendance/punchin')
+@is_loggedin
 def punchin():
 	result = Attendance.query.filter_by(employee_id = session['id']).filter_by(date = date.today()).first()
 	day = date.today().strftime("%A")
@@ -34,6 +36,7 @@ def punchin():
 
 # punchout function
 @attendance_bp.route('/attendance/punchout')
+@is_loggedin
 def punchout():
 	day = date.today().strftime("%A")
 	if day == 'Saturday' or day == 'Sunday':

@@ -23,5 +23,5 @@ def login():
 				session['name'] = result.name
 				session['id'] = result.id
 				flash('Welcome, '+session['name'], 'success')		
-				return redirect(url_for('home_bp.home'))
+				return redirect(url_for('attendance_bp.attendance'))
 	return render_template('login.html', form = form)	
