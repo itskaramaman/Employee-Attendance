@@ -23,3 +23,5 @@ from employee.views import logout_bp
 app.register_blueprint(logout_bp)
 from employee.views import attendance_bp
 app.register_blueprint(attendance_bp)
+from employee.views import profile_bp
+app.register_blueprint(profile_bp)
