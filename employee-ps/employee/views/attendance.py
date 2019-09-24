@@ -17,6 +17,10 @@ def attendance():
 @attendance_bp.route('/attendance/punchin')
 def punchin():
 	result = Attendance.query.filter_by(employee_id = session['id']).filter_by(date = date.today()).first()
+	day = date.today().strftime("%A")
+	if day == 'Saturday' or day == 'Sunday':
+		flash('Today is a Weekoff', 'dark')
+		return render_template('attendance.html')
 	if result == None:
 		new_attendance = Attendance(datetime.utcnow(), datetime.utcnow(), session['id'])
 		db.session.add(new_attendance)
@@ -31,6 +35,10 @@ def punchin():
 # punchout function
 @attendance_bp.route('/attendance/punchout')
 def punchout():
+	day = date.today().strftime("%A")
+	if day == 'Saturday' or day == 'Sunday':
+		flash('Today is a Weekoff', 'dark')
+		return render_template('attendance.html')
 	result = Attendance.query.filter_by(employee_id=session['id']).filter_by(date=date.today()).first()
 	if result != None:
 		result.punchout = datetime.utcnow()
