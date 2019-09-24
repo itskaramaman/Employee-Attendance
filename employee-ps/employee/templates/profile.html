@@ -1,4 +1,15 @@
 {% extends 'layout.html' %}
 {% block content %}
 	<h1>Profile</h1>
+	<ul class="list-group">
+		<li class="list-group-item mb-1">
+			<span class="font-weight-bold">Name: </span>{{ emp.name }}	
+		</li>
+		<li class="list-group-item mb-1">
+			<span class="font-weight-bold">Email: </span>{{ emp.email }}	
+		</li>
+		<li class="list-group-item mb-1">
+			<span class="font-weight-bold">Address: </span>{{ emp.address }}	
+		</li>
+	</ul>
 {% endblock %}
