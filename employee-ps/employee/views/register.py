@@ -2,12 +2,10 @@ from flask import Blueprint, render_template, request, flash, session, redirect,
 from employee.forms.register import RegisterationForm
 from employee import db
 from employee.models.employee import Employee
-from employee.views.login_check import is_loggedin
 
 register_bp = Blueprint('register_bp', __name__)
 
 @register_bp.route('/register', methods=['GET', 'POST'])
-@is_loggedin
 def register():
 	form = RegisterationForm(request.form)
 	if request.method == 'POST' and form.validate():

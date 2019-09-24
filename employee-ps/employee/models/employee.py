@@ -1,6 +1,7 @@
 from employee import db
 from uuid import uuid4
 from employee.models.attendance import Attendance
+from passlib.hash import sha256_crypt
 
 class Employee(db.Model):
 	id = db.Column(db.String(36), primary_key=True, default=str(uuid4()))
@@ -15,7 +16,7 @@ class Employee(db.Model):
 		self.name = name
 		self.email = email
 		self.address = address
-		self.password = password
+		self.password = sha256_crypt.hash(password)
 
 	def __repr__(self):
 		return "<Employee(id=%s, name='%s', email='%s', address='%s, password=%s)>" % (

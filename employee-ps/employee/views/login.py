@@ -1,6 +1,7 @@
 from flask import Blueprint, request, render_template, flash, redirect, url_for, session
 from employee.forms import LoginForm
 from employee.models import Employee
+from passlib.hash import sha256_crypt
 
 login_bp = Blueprint('login_bp', __name__)
 
@@ -15,7 +16,7 @@ def login():
 			flash('Wrong Credentials', 'danger')
 			return redirect(url_for('login_bp.login'))
 		else:
-			if password_credential != result.password:
+			if not sha256_crypt.verify(password_credential,result.password):
 				flash('Wrong Credentials', 'danger')
 				return redirect(url_for('login_bp.login'))
 			else:

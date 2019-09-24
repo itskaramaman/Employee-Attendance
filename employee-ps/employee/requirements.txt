@@ -1,0 +1,6 @@
+flask
+Flask-WTF
+Flask-Migrate
+Flask-SQLAlchemy
+psycopg2
+passlib
