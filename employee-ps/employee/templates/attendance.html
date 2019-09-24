@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+	<h1>Attendance</h1>
+	<div class="jumbotron">
+		<h3>Mark your attendance</h3>
+		<div class="d-flex mt-5">
+			<a href="/attendance/punchin">
+				<button class="btn btn-outline-success rounded-circle" style="height: 150px; width: 150px">Punch in</button>
+			</a>
+			<a href="/attendance/punchout">
+				<button class="btn btn-outline-success rounded-circle ml-5" style="height: 150px; width: 150px">Punch out</button>
+			</a>
+			<h4 class="ml-5 mt-5">Daily mark your attendance to avoid any conflicts.</h4>
+		</div>
+	</div>
+{% endblock %}
